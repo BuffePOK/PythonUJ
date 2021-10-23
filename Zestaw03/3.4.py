@@ -7,9 +7,11 @@ from math import pow as cube
 while True:
     try:
         x = input("podaj liczbe: ")
+        print(x)
         if x == "stop":
-            exit
+            break
+        print(x)
         x = float(x)
         print(x, "x^3 = ", cube(x,3))
-    except FloatingPointError:
+    except ValueError:
         print("To nie jest liczba")
