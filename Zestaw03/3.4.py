@@ -7,10 +7,8 @@ from math import pow as cube
 while True:
     try:
         x = input("podaj liczbe: ")
-        print(x)
         if x == "stop":
             break
-        print(x)
         x = float(x)
         print(x, "x^3 = ", cube(x,3))
     except ValueError:
