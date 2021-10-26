@@ -8,7 +8,7 @@ while True:
     try:
         x = input("podaj liczbe: ")
         if x == "stop":
-            break
+            exit()
         x = float(x)
         print(x, "x^3 = ", cube(x,3))
     except ValueError:
