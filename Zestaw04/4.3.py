@@ -1,13 +1,8 @@
 # Napisać iteracyjną wersję funkcji factorial(n) obliczającej silnię.
-from math import prod
-def silnia(n):
-    odp = prod([i for i in range(n+1) if i != 0])
-    return odp
+def factorial(n):
+	wynik  = 1
+	for i in range(1 , n+1): 
+		wynik = wynik * i
+	return wynik
 
-def main():
-    answer = int(input("Napisz liczbe: "))
-    answer = silnia(answer)
-    print(answer)
-
-if __name__ == "__main__":
-    main()
+print(factorial(int(input("Podaj liczbe: "))))

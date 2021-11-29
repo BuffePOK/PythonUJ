@@ -4,23 +4,19 @@
 # Wskazówka: rozważyć wersję rekurencyjną, a sprawdzanie czy element jest sekwencją, 
 # wykonać przez isinstance(item, (list, tuple)).
 
-def flatten(seq):
-    res = []
+def flatten(sequence):          #metoda rekurencyjna
+    result = []
+    if isinstance(sequence, (list,tuple)) == True:
+        for item in sequence:
+            if isinstance(item, (list, tuple)) == True:
+                for obj in flatten(item):
+                    result.append(obj)
+            else:
+                result.append(item)
 
-    for i in range(len(seq)):
-        if isinstance(seq[i], int):
-            res.append(seq[i])
+    else:
+        result.append(sequence)
+    return result
 
-        else:
-            return flatten(seq[i], res)
-
-    return res            
-
-
-def main():
-    seq = [1, (2, 3), [], [4, (5, 6)], 7]
-    seq = flatten(seq)
-    print(seq)
-
-if __name__ == '__main__':
-    main()
+seq = [1,(2,3),[],[4,(5,6,7)],8,[9]]
+print(flatten(seq))

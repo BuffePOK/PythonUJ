@@ -4,17 +4,11 @@
 # czy element jest sekwencją, wykonać przez isinstance(item, (list, tuple)).
 
 
-def sum_seq(L):
-    for i in L:
-        if isinstance(i, (list, tuple)):
-            L[L.index(i)] = sum(i)
-    return L
+def sum_seq(sequence):
+	if isinstance(sequence , (list, tuple)):
+		return  sum(map(sum_seq , sequence))
+	return sequence
 
-
-def main():
-    L = [1,2,3,[1,3,7,7],5,7,(2,5,3),6,7]
-    answer = sum(sum_seq(L))
-    print(answer)
-
-if __name__ == "__main__":
-    main()
+L=(1,2,3,[5,5])
+print(L)
+print(sum_seq(L))
