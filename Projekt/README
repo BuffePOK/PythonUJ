@@ -1,0 +1,69 @@
+Link do serwera: https://discord.gg/cRjg2g8HnT
+Zaprosic bota na serwer: https://discord.com/api/oauth2/authorize?client_id=915169888379736077&permissions=8&scope=bot
+! W `config.py` trzeba wpisac token, ktore przesle przez email. Nie mozna go udostepnic, bo Discord go wowczas blokuje
+
+"""_ Jak to dziala _"""
+    ## main.py ##
+        line 14 >> funkcja on_ready() wypisuje komunicat, ze bot zostal sie zalogowany na serwer Discord'a
+            {0.user} - nazwa Bot'u, .format(client) transformuje nazwe w zrozumiala dla uzytkownika
+            logging_bot("Bot started") - Zapisuje w .log date i czas startu bot'u (nizej przedstawiono logging_bot.py)
+
+        line 20 >> funkcja otrzymuje `Message` od uzytkownika, napisany na serwerze Discord'a
+            line 21 >> `if ..` przerywa dzialanie funkcji, jezeli otrzymany `Message` jest od samego bot'a
+
+            line 24 >> jezeli 'Message` zaczyna sie of `/exchange`, wtedy jest wywolana funkcja `currency.get_currency_price()` (dalej exchange_rate.py),
+                zmienna `course` otrzyma dane o kursu walut typu `list`. 
+                W liscie `message_list` dane transformuja sie dla mozliwosci wysylania i odczytania przez uzytkownika
+                W .log zostaje sie zapisany komunikat o prawidlowym wykonaniu bloku kodu
+
+            line 43 >> jezeli 'Message` zaczyna sie of `/exit`, wtedy jest wywolana funkcja quit(0) - wylaczenie bot'a
+                Przed tym, do .log zapisuje sie komunikat o wylaczeniu bot'a
+    
+        line 49 >> wlaczenie bot'a
+
+    ## exchange_rate.py ##
+        lines 6-9 >> Linki do kursu walut (google.com > PLN to USD, itd.)
+        line 12 >> wysyla przez `https` dane o wykorzystanej przegladarce, zeby nie bylo problemow z `Bot protection`
+        lines 17-20 >> sciąganie strony internetowej za dla znalezienia kursu walut
+        lines 23-26 >> transformuje strone w format tekstowy, za dla znalezienia danych
+        lines 29-32 >> zgodnie z struktura `html`, znachodze potrzebowane kursy walut
+        lines 34-35 >> zwraca kursy walut, typ danych `list`
+        line 38 >> jezeli plik wywolany jako glowny, kursy walut wypisuja sie przez standardowe wyjscie print()
+
+    ## logging_bot.py ##
+        line 3 >> funkcja otrzymuje `Message`, ktory trzeba zapisac do .log
+        line 4 >> funkcja `open()` otwiera plik w metoda `a` - dopisywanie danych
+        line 5 >> zapisuje dane fomatem: `[~Date-Time~]. Message `%message``
+        line 6 >> zachowuje plik i zanyka go
+        line 8 >> jezeli plik wywolany jako glowny, dane .log wypisuja sie przez standardowe wyjscie print()
+
+"""_ Jak sie korzystac _"""
+    ## main.py ##
+        Po wlaczaniu, bot jest dostepny na serwerze. Wszystkie dzialania ida przez serwer:
+        /exchange - wypisuje kursy walut
+        /exit - wylacza bot'a
+        Ctrl-Z - wylacza bot'a (RuntimeError)
+
+    ## exchange_rate.py ##
+        jezeli plik wywolany jako glowny, kursy walut wypisuja sie przez standardowe wyjscie print()
+
+    ## logging_bot.py ##
+        jezeli plik wywolany jako glowny, dane .log wypisuja sie przez standardowe wyjscie print()
+        
+"""_ Przydatne linki _"""
+    > python : 
+    < https://docs.python.org/3/
+
+    > discord.py : 
+    < https://discordpy.readthedocs.io/en/stable/#extensions
+    < https://discordpy.readthedocs.io/en/stable/api.html#discord.Permissions
+
+    > How to create Bot Discord : 
+    < https://discordpy.readthedocs.io/en/stable/discord.html
+    < https://betterprogramming.pub/coding-a-discord-bot-with-python-64da9d6cade7
+
+    > time.py : 
+    < https://docs.python.org/3/library/time.html
+
+    > BeautifulSoup : 
+    < https://www.crummy.com/software/BeautifulSoup/bs4/doc/
