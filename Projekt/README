@@ -5,6 +5,7 @@ Zaprosic bota na serwer: https://discord.com/api/oauth2/authorize?client_id=9151
 ---
 
 # """_ Jak to dziala _"""
+
 ### main.py
         __line 14__ >> funkcja on_ready() wypisuje komunicat, ze bot zostal sie zalogowany na serwer Discord'a
             {0.user} - nazwa Bot'u, .format(client) transformuje nazwe w zrozumiala dla uzytkownika
@@ -42,6 +43,7 @@ Zaprosic bota na serwer: https://discord.com/api/oauth2/authorize?client_id=9151
 ---
 
 # """_ Jak sie korzystac _"""
+
 ### main.py ##
         Po wlaczaniu, bot jest dostepny na serwerze. Wszystkie dzialania ida przez serwer:
         /exchange - wypisuje kursy walut
@@ -57,6 +59,7 @@ Zaprosic bota na serwer: https://discord.com/api/oauth2/authorize?client_id=9151
 ---
 
 # """_ Przydatne linki _"""
+
     > __python__ : 
     < https://docs.python.org/3/
 
